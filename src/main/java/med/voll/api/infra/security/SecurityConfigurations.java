@@ -29,9 +29,10 @@ public class SecurityConfigurations {
                 .cors(withDefaults()) // Habilita o suporte ao CORS
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/login").permitAll();
+                    req.requestMatchers("/login", "/h2-console/**").permitAll(); // Permite acesso ao H2 Console e ao login
                     req.anyRequest().authenticated();
                 })
+                .headers(headers -> headers.frameOptions().disable()) // Permite o uso do H2 Console em iframes
                 .build();
     }
 

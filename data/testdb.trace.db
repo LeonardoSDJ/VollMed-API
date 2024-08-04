@@ -1,0 +1,13 @@
+2024-08-02 21:11:14 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table consultas(\000d\000a\000d\000a    id bigint not null auto_increment,\000d\000a    medico_id bigint not null,\000d\000a    paciente_id bigint not null,\000d\000a    data datetime not null,\000d\000a\000d\000a    primary key(id),\000d\000a    constraint fk_consultas_medico_id foreign key(medico_id) references medicos(id),\000d\000a    constraint fk_consultas_paciente_id foreign key(paciente_id) references pacientes(id),\000d\000a[*])"; expected "identifier"; SQL statement:
+create table consultas(
+
+    id bigint not null auto_increment,
+    medico_id bigint not null,
+    paciente_id bigint not null,
+    data datetime not null,
+
+    primary key(id),
+    constraint fk_consultas_medico_id foreign key(medico_id) references medicos(id),
+    constraint fk_consultas_paciente_id foreign key(paciente_id) references pacientes(id),
+) [42001-220]

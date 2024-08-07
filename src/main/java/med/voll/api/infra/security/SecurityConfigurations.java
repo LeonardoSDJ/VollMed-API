@@ -29,12 +29,14 @@ public class SecurityConfigurations {
                 .cors(withDefaults()) // Habilita o suporte ao CORS
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/login", "/h2-console/**").permitAll(); // Permite acesso ao H2 Console e ao login
+                    req.requestMatchers("/login", "/cadastro-usuario", "/h2-console/**").permitAll(); // Permite acesso ao H2 Console, login e cadastro de usuário
                     req.anyRequest().authenticated();
                 })
-                .headers(headers -> headers.frameOptions().disable()) // Permite o uso do H2 Console em iframes
+                .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Desabilita X-Frame-Options para uso do H2 Console em iframes
                 .build();
     }
+
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {

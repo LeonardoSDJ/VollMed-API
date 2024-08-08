@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosCadastroUsuario;
 import med.voll.api.domain.usuario.DadosDetalhamentoUsuario;
 import med.voll.api.domain.usuario.Usuario;
-import med.voll.api.domain.usuario.UsuarioRepository;
+import med.voll.api.controller.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,15 +19,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class CadastroUsuarioController {
 
     @Autowired
-    private UsuarioRepository repository;
+    private UsuarioService usuarioService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarusuario(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder uriBuilder){
-        var usuario = new Usuario(dados);
-        repository.save(usuario);
+    public ResponseEntity<?> cadastrarUsuario(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder uriBuilder) {
+        Usuario usuario = usuarioService.criarUsuario(dados);
 
-        var uri = uriBuilder.path("/cadastro-usuario").buildAndExpand(usuario.getId()).toUri();
+        var uri = uriBuilder.path("/cadastro-usuario/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
     }
 }

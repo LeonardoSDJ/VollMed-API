@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosCadastroUsuario;
 import med.voll.api.domain.usuario.DadosDetalhamentoUsuario;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("cadastro-usuario")
+@SecurityRequirement(name = "bearer-key")
 public class CadastroUsuarioController {
 
     @Autowired

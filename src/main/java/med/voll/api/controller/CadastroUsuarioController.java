@@ -5,7 +5,6 @@ import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosCadastroUsuario;
 import med.voll.api.domain.usuario.DadosDetalhamentoUsuario;
 import med.voll.api.domain.usuario.Usuario;
-import med.voll.api.controller.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

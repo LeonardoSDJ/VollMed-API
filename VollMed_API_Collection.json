@@ -1,0 +1,199 @@
+{
+	"info": {
+		"name": "API Endpoints Collection",
+		"description": "A collection of API endpoints for patient and doctor management, authentication, and consultation scheduling.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Get Pacientes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/pacientes?page=0&size=10&sort=nome",
+							"host": ["{{baseUrl}}"],
+							"path": ["pacientes"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "10"},
+								{"key": "sort", "value": "nome"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Paciente",
+					"request": {
+						"method": "POST",
+						"url": "{{baseUrl}}/pacientes",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@email.com\",\n  \"telefone\": \"(11) 98765-4321\",\n  \"cpf\": \"123.456.789-00\",\n  \"endereco\": {\n    \"logradouro\": \"Rua das Flores\",\n    \"bairro\": \"Jardim Primavera\",\n    \"cep\": \"12345-678\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"complemento\": \"Apto 101\",\n    \"numero\": \"123\"\n  }\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Paciente",
+					"request": {
+						"method": "PUT",
+						"url": "{{baseUrl}}/pacientes",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"nome\": \"João Silva Atualizado\",\n  \"telefone\": \"(11) 98765-4322\",\n  \"endereco\": {\n    \"logradouro\": \"Rua das Flores\",\n    \"bairro\": \"Jardim Primavera\",\n    \"cep\": \"12345-678\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"complemento\": \"Apto 102\",\n    \"numero\": \"123\"\n  }\n}"
+						}
+					}
+				},
+				{
+					"name": "Get Paciente by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{baseUrl}}/pacientes/1"
+					}
+				},
+				{
+					"name": "Delete Paciente",
+					"request": {
+						"method": "DELETE",
+						"url": "{{baseUrl}}/pacientes/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "Médicos",
+			"item": [
+				{
+					"name": "Get Médicos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/medicos?page=0&size=10&sort=nome",
+							"host": ["{{baseUrl}}"],
+							"path": ["medicos"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "10"},
+								{"key": "sort", "value": "nome"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Médico",
+					"request": {
+						"method": "POST",
+						"url": "{{baseUrl}}/medicos",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Dr. Maria Santos\",\n  \"email\": \"maria.santos@clinica.com\",\n  \"telefone\": \"(11) 98765-4321\",\n  \"crm\": \"123456\",\n  \"especialidade\": \"ORTOPEDIA\",\n  \"endereco\": {\n    \"logradouro\": \"Avenida Paulista\",\n    \"bairro\": \"Bela Vista\",\n    \"cep\": \"01311-000\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"complemento\": \"Sala 1001\",\n    \"numero\": \"1000\"\n  }\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Médico",
+					"request": {
+						"method": "PUT",
+						"url": "{{baseUrl}}/medicos",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"nome\": \"Dr. Maria Santos Atualizado\",\n  \"telefone\": \"(11) 98765-4322\",\n  \"endereco\": {\n    \"logradouro\": \"Avenida Paulista\",\n    \"bairro\": \"Bela Vista\",\n    \"cep\": \"01311-000\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"complemento\": \"Sala 1002\",\n    \"numero\": \"1000\"\n  }\n}"
+						}
+					}
+				},
+				{
+					"name": "Get Médico by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{baseUrl}}/medicos/1"
+					}
+				},
+				{
+					"name": "Delete Médico",
+					"request": {
+						"method": "DELETE",
+						"url": "{{baseUrl}}/medicos/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"url": "{{baseUrl}}/login",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"usuario@exemplo.com\",\n  \"senha\": \"senha123\"\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Consultas",
+			"item": [
+				{
+					"name": "Agendar Consulta",
+					"request": {
+						"method": "POST",
+						"url": "{{baseUrl}}/consultas",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idMedico\": 1,\n  \"idPaciente\": 1,\n  \"data\": \"2024-09-26T10:00:00Z\",\n  \"especialidade\": \"ORTOPEDIA\"\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Cadastro de Usuário",
+			"item": [
+				{
+					"name": "Cadastrar Usuário",
+					"request": {
+						"method": "POST",
+						"url": "{{baseUrl}}/cadastro-usuario",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"usuario\": \"novo.usuario@exemplo.com\",\n  \"senha\": \"senha123\"\n}"
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
